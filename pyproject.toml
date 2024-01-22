@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "hh-app"
+version = "0.1.0"
+description = ""
+authors = ["Pavel Ryaguzov <pashajobber@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.109.0"
+uvicorn = {extras = ["standard"], version = "^0.26.0"}
+pydantic = {extras = ["email"], version = "^2.5.3"}
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.4"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
