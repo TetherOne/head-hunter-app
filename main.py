@@ -1,12 +1,22 @@
-from fastapi import FastAPI
+from contextlib import asynccontextmanager
 
-from pydantic import EmailStr
+from fastapi import FastAPI
 
 import uvicorn
 
+from core.models import db_helper
+from core.models import Base
 
 
-app = FastAPI()
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    async with db_helper.engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
+
+    yield
+
+
+app = FastAPI(lifespan=lifespan)
 
 
 
