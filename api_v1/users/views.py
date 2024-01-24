@@ -1,8 +1,14 @@
-from fastapi import APIRouter, HTTPException, status, Depends
+from fastapi import APIRouter
+from fastapi import HTTPException
+from fastapi import status
+from fastapi import Depends
+
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from core.models import db_helper
+
 from .schemas import User, UserCreate
+
 from . import crud
 
 
