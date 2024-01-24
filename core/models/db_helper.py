@@ -1,6 +1,10 @@
-from sqlalchemy.ext.asyncio import create_async_engine, async_session, AsyncSession
-from sqlalchemy.ext.asyncio import async_sessionmaker, async_scoped_session
+from sqlalchemy.ext.asyncio import create_async_engine
+from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.ext.asyncio import async_sessionmaker
+from sqlalchemy.ext.asyncio import async_scoped_session
+
 from asyncio import current_task
+
 from core.config import settings
 
 
