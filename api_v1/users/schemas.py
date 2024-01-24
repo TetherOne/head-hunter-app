@@ -1,10 +1,12 @@
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel
+from pydantic import ConfigDict
 
 
 
 class UserBase(BaseModel):
 
     name: str
+
 
 
 class UserCreate(UserBase):
