@@ -63,7 +63,7 @@ async def update_user(session: AsyncSession, user: User, user_update: UserUpdate
 async def delete_user(session: AsyncSession, user: User) -> None:
 
     await session.delete(user)
-
+    await session.commit()
 
 
 
