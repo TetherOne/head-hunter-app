@@ -1,13 +1,12 @@
 from fastapi import APIRouter
-from fastapi import HTTPException
-from fastapi import status
 from fastapi import Depends
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from core.models import db_helper
+from .dependencies import user_by_id
 
-from .schemas import User, UserCreate
+from .schemas import User, UserCreate, UserUpdate
 
 from . import crud
 
@@ -38,20 +37,49 @@ async def create_user(
 
 @router.get('/{user_id}', response_model=User)
 async def get_user(
-        user_id: int,
-        session: AsyncSession = Depends(db_helper.scoped_session_dependency),
+    user: User = Depends(user_by_id),
+):
+    return user
+
+
+
+@router.put('/{user_id}')
+async def update_user(
+    user_update: UserUpdate,
+    user: User = Depends(user_by_id),
+    session: AsyncSession = Depends(db_helper.scoped_session_dependency),
 ):
 
-    user = await crud.get_user(session=session, user_id=user_id)
-
-    if user is not None:
-
-        return user
-
-    raise HTTPException(
-
-        status_code=status.HTTP_404_NOT_FOUND,
-        detail=f'User {user_id} not found',
-
+    return await crud.update_user(
+        user=user,
+        session=session,
+        user_update=user_update,
     )
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

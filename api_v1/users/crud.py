@@ -5,8 +5,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from core.models import User
 
-from .schemas import UserCreate
-
+from .schemas import UserCreate, UserUpdate
 
 
 async def get_users(session: AsyncSession) -> list[User]:
@@ -44,3 +43,46 @@ async def create_user(session: AsyncSession, user_in: UserCreate) -> User:
     await session.commit()
 
     return user
+
+
+
+async def update_user(session: AsyncSession, user: User, user_update: UserUpdate) -> User:
+    """
+
+    Функция для обновления пользователя
+
+    """
+    for name, value in user_update.model_dump().items():
+        setattr(user, name, value)
+    await session.commit()
+
+    return user
+
+
+
+async def delete_user(session: AsyncSession, user: User) -> None:
+
+    await session.delete(user)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
