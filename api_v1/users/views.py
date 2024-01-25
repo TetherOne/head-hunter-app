@@ -6,7 +6,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from core.models import db_helper
 from .dependencies import user_by_id
 
-from .schemas import User, UserCreate, UserUpdate
+from .schemas import User, UserCreate, UserUpdate, UserUpdatePartial
 
 from . import crud
 
@@ -55,6 +55,24 @@ async def update_user(
         session=session,
         user_update=user_update,
     )
+
+
+
+@router.patch('/{user_id}')
+async def update_user_partial(
+    user_update: UserUpdatePartial,
+    user: User = Depends(user_by_id),
+    session: AsyncSession = Depends(db_helper.scoped_session_dependency),
+):
+
+    return await crud.update_user(
+        user=user,
+        session=session,
+        user_update=user_update,
+    )
+
+
+
 
 
 
