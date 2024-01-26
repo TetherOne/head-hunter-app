@@ -47,14 +47,19 @@ async def create_resume(session: AsyncSession, resume_in: ResumeCreate) -> Resum
 
 
 
-async def update_resume(session: AsyncSession, resume: Resume, resume_update: ResumeUpdate | ResumeUpdatePartial,) -> Resume:
+async def update_resume(
+        session: AsyncSession,
+        resume: Resume,
+        resume_update: ResumeUpdate | ResumeUpdatePartial,
+        partial: bool = False,
+) -> Resume:
     """
 
     Функция для обновления пользователя
 
     """
 
-    for name, value in resume_update.model_dump().items():
+    for name, value in resume_update.model_dump(exclude_unset=partial).items():
         setattr(resume, name, value)
 
     await session.commit()

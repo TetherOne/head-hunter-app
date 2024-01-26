@@ -72,9 +72,10 @@ async def update_resume_partial(
 ):
 
     return await crud.update_resume(
-        resume=resume,
         session=session,
+        resume=resume,
         resume_update=resume_update,
+        partial=True
     )
 
 
