@@ -12,7 +12,6 @@ class Resume(Base):
     skills: Mapped[str]
     experience: Mapped[str]
     salary: Mapped[int]
-    phone: Mapped[str]
 
     user_id: Mapped[int] = mapped_column(
         ForeignKey('users.id'),
