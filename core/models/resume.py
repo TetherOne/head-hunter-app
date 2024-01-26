@@ -1,4 +1,5 @@
-from sqlalchemy.orm import Mapped
+from sqlalchemy import ForeignKey
+from sqlalchemy.orm import Mapped, mapped_column
 
 from core.models.base import Base
 
@@ -13,3 +14,6 @@ class Resume(Base):
     salary: Mapped[int]
     phone: Mapped[str]
 
+    user_id: Mapped[int] = mapped_column(
+        ForeignKey('users.id'),
+    )
