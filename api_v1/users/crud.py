@@ -54,6 +54,7 @@ async def update_user(session: AsyncSession, user: User, user_update: UserUpdate
     """
     for name, value in user_update.model_dump().items():
         setattr(user, name, value)
+
     await session.commit()
 
     return user
@@ -61,7 +62,11 @@ async def update_user(session: AsyncSession, user: User, user_update: UserUpdate
 
 
 async def delete_user(session: AsyncSession, user: User) -> None:
+    """
 
+    Функция для удаления пользователя
+
+    """
     await session.delete(user)
     await session.commit()
 
