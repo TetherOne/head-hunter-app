@@ -1,8 +1,8 @@
 from fastapi import APIRouter
 
-from .users.views import router as user_router
+from .resume.views import router as resume_router
 
 
 
 router = APIRouter()
-router.include_router(router=user_router)
+router.include_router(router=resume_router)

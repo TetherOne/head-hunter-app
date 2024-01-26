@@ -4,24 +4,25 @@ from fastapi import Depends, Path, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
 
-from core.models import db_helper, User
+from core.models import db_helper
+from core.models import Resume
 from . import crud
 
 
-async def user_by_id(
-        user_id: Annotated[int, Path],
+async def resume_by_id(
+        resume_id: Annotated[int, Path],
         session: AsyncSession = Depends(db_helper.scoped_session_dependency),
-) -> User:
+) -> Resume:
 
-    user = await crud.get_user(session=session, user_id=user_id)
+    resume = await crud.get_resume(session=session, resume_id=resume_id)
 
-    if user is not None:
+    if resume is not None:
 
-        return user
+        return resume
 
     raise HTTPException(
 
         status_code=status.HTTP_404_NOT_FOUND,
-        detail=f'User {user_id} not found',
+        detail=f'User {resume_id} not found',
 
     )
