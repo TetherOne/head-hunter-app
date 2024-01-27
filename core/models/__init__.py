@@ -2,6 +2,7 @@ __all__ = (
     'Base',
     'Resume',
     'User',
+    'Profile',
     'DatabaseHelper',
     'db_helper',
 )
@@ -15,3 +16,4 @@ from .base import Base
 
 from .resume import Resume
 from .user import User
+from .profile import Profile
