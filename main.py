@@ -22,7 +22,7 @@ app = FastAPI(lifespan=lifespan)
 app.include_router(router=router_v1, prefix=settings.api_v1_prefix)
 
 
-
+  
 @app.get('/')
 def hello_world():
     return {
