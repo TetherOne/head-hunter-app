@@ -1,5 +1,9 @@
 from contextlib import asynccontextmanager
 
+import aiosignal
+from fastapi_cache import FastAPICache
+from fastapi_cache.backends.redis import RedisBackend
+
 from api_v1 import main_router as router_v1
 
 from core.config import settings

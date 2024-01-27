@@ -1,3 +1,4 @@
+from fastapi_cache.decorator import cache
 from sqlalchemy import select
 from sqlalchemy import Result
 
