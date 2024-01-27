@@ -9,7 +9,6 @@ class ResumeBase(BaseModel):
     skills: str
     experience: str
     salary: int
-    phone: str
 
 
 class ResumeCreate(ResumeBase):
@@ -28,7 +27,6 @@ class ResumeUpdatePartial(ResumeCreate):
     skills: str | None = None
     experience: str | None = None
     salary: int | None = None
-    phone: str | None = None
 
 
 class Resume(ResumeBase):

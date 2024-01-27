@@ -2,11 +2,7 @@ from contextlib import asynccontextmanager
 
 from api_v1 import router as router_v1
 
-from core.models import db_helper
-
 from core.config import settings
-
-from core.models import Base
 
 from fastapi import FastAPI
 

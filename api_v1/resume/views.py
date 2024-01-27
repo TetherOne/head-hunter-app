@@ -1,4 +1,7 @@
-from typing import List
+from .schemas import ResumeUpdatePartial
+from .schemas import ResumeCreate
+from .schemas import ResumeUpdate
+from .schemas import Resume
 
 from fastapi import APIRouter
 from fastapi import Depends
@@ -6,12 +9,12 @@ from fastapi import status
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from .dependencies import resume_by_id
+
 from core.models import db_helper
 
-
 from . import crud
-from .dependencies import resume_by_id
-from .schemas import Resume, ResumeCreate, ResumeUpdate, ResumeUpdatePartial
+
 
 
 router = APIRouter(tags=['Resume'])

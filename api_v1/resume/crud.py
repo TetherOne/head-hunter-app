@@ -3,16 +3,18 @@ from sqlalchemy import Result
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
-
 from core.models import Resume
 
-from .schemas import ResumeCreate, ResumeUpdate, ResumeUpdatePartial
+from .schemas import ResumeCreate
+from .schemas import ResumeUpdate
+from .schemas import ResumeUpdatePartial
+
 
 
 async def get_all_resume(session: AsyncSession) -> list[Resume]:
     """
 
-    Функция для получения всех пользователей
+    Функция для получения всех резюме
 
     """
     stmt = select(Resume).order_by(Resume.id)
@@ -26,7 +28,7 @@ async def get_all_resume(session: AsyncSession) -> list[Resume]:
 async def get_resume(session: AsyncSession, resume_id: int) -> Resume | None:
     """
 
-    Функция для получения пользователя по id
+    Функция для получения резюме по id
 
     """
     return await session.get(Resume, resume_id)
@@ -36,7 +38,7 @@ async def get_resume(session: AsyncSession, resume_id: int) -> Resume | None:
 async def create_resume(session: AsyncSession, resume_in: ResumeCreate) -> Resume:
     """
 
-    Функция для создания пользователя
+    Функция для создания резюме
 
     """
     resume = Resume(**resume_in.model_dump())
@@ -55,7 +57,7 @@ async def update_resume(
 ) -> Resume:
     """
 
-    Функция для обновления пользователя
+    Функция для обновления резюме
 
     """
 
@@ -71,7 +73,7 @@ async def update_resume(
 async def delete_resume(session: AsyncSession, resume: Resume) -> None:
     """
 
-    Функция для удаления пользователя
+    Функция для удаления резюме
 
     """
     await session.delete(resume)

@@ -1,12 +1,17 @@
-from typing import Annotated
-
-from fastapi import Depends, Path, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from fastapi import HTTPException
+from fastapi import Depends
+from fastapi import status
+from fastapi import Path
+
+from typing import Annotated
 
 from core.models import db_helper
 from core.models import Resume
+
 from . import crud
+
 
 
 async def resume_by_id(
