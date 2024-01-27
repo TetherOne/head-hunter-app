@@ -1,6 +1,6 @@
 from contextlib import asynccontextmanager
 
-from api_v1 import router as router_v1
+from api_v1 import main_router as router_v1
 
 from core.config import settings
 
