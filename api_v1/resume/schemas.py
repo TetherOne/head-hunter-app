@@ -5,6 +5,7 @@ from pydantic import ConfigDict
 
 class ResumeBase(BaseModel):
 
+    user_id: int
     job_name: str
     skills: str
     experience: str
