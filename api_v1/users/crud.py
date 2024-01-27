@@ -16,3 +16,13 @@ async def get_users(session: AsyncSession) -> list[User]:
     users = result.scalars().all()
 
     return list(users)
+
+
+
+async def get_user(session: AsyncSession, user_id: int) -> User | None:
+    """
+
+    Функция для получения резюме по id
+
+    """
+    return await session.get(User, user_id)

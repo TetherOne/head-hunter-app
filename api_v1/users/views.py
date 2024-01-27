@@ -2,6 +2,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from core.models import db_helper
+from .dependencies import user_by_id
 from .schemas import User
 from . import crud
 
@@ -15,3 +16,11 @@ async def get_users(
 ):
 
     return await crud.get_users(session=session)
+
+
+
+@user_router.get('/{user_id}', response_model=User)
+async def get_user(
+    user: User = Depends(user_by_id),
+):
+    return user
