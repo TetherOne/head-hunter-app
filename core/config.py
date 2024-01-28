@@ -1,5 +1,7 @@
-from pydantic import BaseModel
 from pydantic_settings import BaseSettings
+
+from pydantic import BaseModel
+
 from pathlib import Path
 
 

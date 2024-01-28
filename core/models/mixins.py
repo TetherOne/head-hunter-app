@@ -1,10 +1,17 @@
-from typing import TYPE_CHECKING
+from sqlalchemy.orm import declared_attr
+from sqlalchemy.orm import mapped_column
+from sqlalchemy.orm import relationship
+from sqlalchemy.orm import Mapped
 
 from sqlalchemy import ForeignKey
-from sqlalchemy.orm import declared_attr, mapped_column, relationship, Mapped
+
+from typing import TYPE_CHECKING
+
+
 
 if TYPE_CHECKING:
     from .user import User
+
 
 
 class UserRelationMixin:

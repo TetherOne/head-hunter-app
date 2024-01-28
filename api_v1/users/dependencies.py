@@ -1,10 +1,16 @@
-from typing import Annotated
-
-from fastapi import Path, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from core.models import db_helper, User
+
+from typing import Annotated
+
+from fastapi import HTTPException
+from fastapi import Depends
+from fastapi import status
+from fastapi import Path
+
 from . import crud
+
 
 
 async def user_by_id(

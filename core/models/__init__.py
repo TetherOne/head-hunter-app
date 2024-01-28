@@ -12,8 +12,9 @@ __all__ = (
 from .db_helper import DatabaseHelper
 from .db_helper import db_helper
 
-from .base import Base
-
+from .profile import Profile
 from .resume import Resume
 from .user import User
-from .profile import Profile
+
+from .base import Base
+

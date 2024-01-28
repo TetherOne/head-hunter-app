@@ -1,4 +1,5 @@
-from pydantic import ConfigDict, BaseModel
+from pydantic import ConfigDict
+from pydantic import BaseModel
 
 
 
@@ -8,8 +9,10 @@ class UserBase(BaseModel):
     surname: str
 
 
+
 class UserCreate(UserBase):
     pass
+
 
 
 class User(UserBase):

@@ -1,14 +1,13 @@
-from fastapi_cache.decorator import cache
-from sqlalchemy import select
-from sqlalchemy import Result
-
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from core.models import Resume
-
+from .schemas import ResumeUpdatePartial
 from .schemas import ResumeCreate
 from .schemas import ResumeUpdate
-from .schemas import ResumeUpdatePartial
+
+from sqlalchemy import Result
+from sqlalchemy import select
+
+from core.models import Resume
 
 
 
