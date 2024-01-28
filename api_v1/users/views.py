@@ -38,5 +38,3 @@ async def get_user(
     user: User = Depends(user_by_id),
 ):
     return user
-
-
