@@ -1,10 +1,15 @@
+from sqlalchemy.orm import mapped_column
+from sqlalchemy.orm import Mapped
+
+from .mixins import UserRelationMixin
+
 from typing import TYPE_CHECKING
 
-from sqlalchemy import String, ForeignKey
-from sqlalchemy.orm import Mapped, mapped_column, relationship
+from sqlalchemy import String
 
 from core.models import Base
-from .mixins import UserRelationMixin
+
+
 
 if TYPE_CHECKING:
     from .user import User
