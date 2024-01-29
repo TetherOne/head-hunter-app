@@ -7,6 +7,7 @@ from fastapi import Request
 from fastapi import FastAPI
 from fastapi.templating import Jinja2Templates
 import uvicorn
+from fastapi.testclient import TestClient
 
 
 
@@ -27,7 +28,7 @@ templates = Jinja2Templates(directory='templates')
 
 @app.get('/')
 def hello_world(request: Request):
-    return templates.TemplateResponse('main_page.html', {'request': request})
+    return {'message': 'hello world'}
 
 
 
