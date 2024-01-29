@@ -19,7 +19,7 @@ if TYPE_CHECKING:
 class User(Base):
 
     username: Mapped[str] = mapped_column(String(30))
-    surname: Mapped[str] = mapped_column(String(30))
+    password: Mapped[str] = mapped_column(String(40))
 
     resume: Mapped[list['Resume']] = relationship(back_populates='user')
     profile: Mapped['Profile'] = relationship(back_populates='user')
