@@ -3,3 +3,4 @@ __pycache__/
 venv/
 /venv/
 /venv library root/
+.pytest_cache
