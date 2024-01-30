@@ -1,7 +1,7 @@
-from typing import Optional
-
 from fastapi_users import schemas
+
 from pydantic import EmailStr
+
 
 
 class UserRead(schemas.BaseUser[int]):
@@ -13,8 +13,11 @@ class UserRead(schemas.BaseUser[int]):
     is_superuser: bool
     is_verified: bool
 
+
     class Config:
         orm_mode = True
+
+
 
 class UserCreate(schemas.BaseUserCreate):
 
@@ -24,6 +27,7 @@ class UserCreate(schemas.BaseUserCreate):
     is_active: bool
     is_superuser: bool
     is_verified: bool
+
 
 
 class UserUpdate(schemas.BaseUserUpdate):
