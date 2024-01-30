@@ -20,7 +20,7 @@ class Profile(UserRelationMixin, Base):
     _user_id_unique = True
     _user_back_populates = 'profile'
 
-
+    id: Mapped[int] = mapped_column(primary_key=True)
     city: Mapped[str | None] = mapped_column(String(30))
     bio: Mapped[str | None]
 

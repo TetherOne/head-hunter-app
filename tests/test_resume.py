@@ -23,3 +23,4 @@ async def test_main_page_async():
         assert response.status_code == 200
         assert response.json() == {'message': 'hello world'}
 
+

@@ -7,7 +7,12 @@ from typing import TYPE_CHECKING
 from sqlalchemy import String
 
 from core.models import Base
+from typing import AsyncGenerator
 
+from fastapi import Depends
+from fastapi_users.db import SQLAlchemyBaseUserTable, SQLAlchemyUserDatabase
+from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
+from sqlalchemy.orm import DeclarativeBase
 
 
 if TYPE_CHECKING:
@@ -16,10 +21,14 @@ if TYPE_CHECKING:
 
 
 
-class User(Base):
+class User(SQLAlchemyBaseUserTable[int], Base):
+    __tablename__ = 'users'
 
+
+    id: Mapped[int] = mapped_column(primary_key=True)
     username: Mapped[str] = mapped_column(String(30))
-    password: Mapped[str] = mapped_column(String(40))
+
 
     resume: Mapped[list['Resume']] = relationship(back_populates='user')
     profile: Mapped['Profile'] = relationship(back_populates='user')
+
