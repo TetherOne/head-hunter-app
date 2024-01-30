@@ -1,4 +1,4 @@
-from core.models.user import get_user_db
+from core.models.user import get_user_db, get_async_session
 
 from fastapi_users import BaseUserManager
 from fastapi_users import IntegerIDMixin
@@ -9,13 +9,13 @@ from fastapi_users import models
 from fastapi import Depends
 from fastapi import Request
 
-from core.models import User
+from core.models import User, Profile
 
 from typing import Optional
 
 
 
-SECRET = "SECRET"
+SECRET = "SECRET-KEY-MANAGER"
 
 
 
@@ -27,6 +27,13 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
 
     async def on_after_register(self, user: User, request: Optional[Request] = None):
         print(f"User {user.id} has registered.")
+
+        session = await get_async_session().__anext__()
+
+        profile = Profile(user_id=user.id)
+        session.add(profile)
+
+        await session.commit()
 
 
     async def create(
@@ -57,6 +64,8 @@ class UserManager(IntegerIDMixin, BaseUserManager[User, int]):
         await self.on_after_register(created_user, request)
 
         return created_user
+
+
 
 
 

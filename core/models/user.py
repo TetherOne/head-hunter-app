@@ -33,9 +33,18 @@ class User(SQLAlchemyBaseUserTable[int], Base):
     profile: Mapped['Profile'] = relationship(back_populates='user')
 
 
+
 async def get_async_session() -> AsyncGenerator[AsyncSession, None]:
-    async with async_session_maker() as session:
-        yield session
+    session = None
+    try:
+        async with async_session_maker() as s:
+            session = s
+            yield session
+    except GeneratorExit:
+        if session:
+            await session.close()
+        raise
+
 
 
 async def get_user_db(session: AsyncSession = Depends(get_async_session)):
