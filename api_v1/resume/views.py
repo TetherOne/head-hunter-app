@@ -1,3 +1,5 @@
+from sqlalchemy.ext.asyncio import AsyncSession
+
 from .schemas import ResumeUpdatePartial
 from .schemas import ResumeCreate
 from .schemas import ResumeUpdate
@@ -6,8 +8,6 @@ from .schemas import Resume
 from fastapi import APIRouter
 from fastapi import Depends
 from fastapi import status
-
-from sqlalchemy.ext.asyncio import AsyncSession
 
 from .dependencies import resume_by_id
 
@@ -48,6 +48,7 @@ async def create_resume(
 async def get_resume(
     resume: Resume = Depends(resume_by_id),
 ):
+
     return resume
 
 

@@ -33,8 +33,8 @@ fastapi_users = FastAPIUsers[User, int](
 
 main_router.include_router(
     fastapi_users.get_auth_router(auth_backend),
-    prefix="/auth/jwt",
-    tags=["auth"],
+    prefix="/auth",
+    tags=["Auth"],
 )
 
 
@@ -42,5 +42,5 @@ main_router.include_router(
 main_router.include_router(
     fastapi_users.get_register_router(UserRead, UserCreate),
     prefix="/auth",
-    tags=["auth"],
+    tags=["Auth"],
 )

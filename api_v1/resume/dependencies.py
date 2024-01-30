@@ -5,10 +5,10 @@ from fastapi import Depends
 from fastapi import status
 from fastapi import Path
 
-from typing import Annotated
-
 from core.models import db_helper
 from core.models import Resume
+
+from typing import Annotated
 
 from . import crud
 

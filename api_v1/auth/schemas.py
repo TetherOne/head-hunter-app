@@ -1,8 +1,9 @@
-from typing import Optional
-
 from fastapi_users import schemas
 
 from pydantic import EmailStr
+
+from typing import Optional
+
 
 
 

@@ -6,10 +6,11 @@ from fastapi_users import exceptions
 from fastapi_users import schemas
 from fastapi_users import models
 
+from core.models import Profile
+from core.models import User
+
 from fastapi import Depends
 from fastapi import Request
-
-from core.models import User, Profile
 
 from typing import Optional
 
