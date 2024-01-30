@@ -1,3 +1,5 @@
+from fastapi_users.db import SQLAlchemyBaseUserTable
+
 from sqlalchemy.orm import mapped_column
 from sqlalchemy.orm import relationship
 from sqlalchemy.orm import Mapped
@@ -7,12 +9,7 @@ from typing import TYPE_CHECKING
 from sqlalchemy import String
 
 from core.models import Base
-from typing import AsyncGenerator
 
-from fastapi import Depends
-from fastapi_users.db import SQLAlchemyBaseUserTable, SQLAlchemyUserDatabase
-from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
-from sqlalchemy.orm import DeclarativeBase
 
 
 if TYPE_CHECKING:
@@ -22,6 +19,7 @@ if TYPE_CHECKING:
 
 
 class User(SQLAlchemyBaseUserTable[int], Base):
+
     __tablename__ = 'users'
 
 

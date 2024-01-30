@@ -1,4 +1,5 @@
 from pydantic import ConfigDict
+from pydantic import EmailStr
 from pydantic import BaseModel
 
 
@@ -6,7 +7,11 @@ from pydantic import BaseModel
 class UserBase(BaseModel):
 
     username: str
-    password: str
+    hashed_password: str
+    email: EmailStr
+    is_active: bool
+    is_superuser: bool
+    is_verified: bool
 
 
 
