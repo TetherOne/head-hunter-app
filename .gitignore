@@ -4,3 +4,5 @@ venv/
 /venv/
 /venv library root/
 .pytest_cache
+img.png
+img_1.png
