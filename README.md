@@ -8,8 +8,8 @@
 
 Написано API для взаимодействия с резюме пользователей, регистрация и входа
 
-![Image alt](https://github.com/TetherOne/head_hunter/raw/master/img_2.png)
-![Image alt](https://github.com/TetherOne/head_hunter/raw/master/img_3.png)
+![Image alt](https://github.com/TetherOne/head_hunter/raw/master/photoes_for_github/img_2.png)
+![Image alt](https://github.com/TetherOne/head_hunter/raw/master/photoes_for_github/img_3.png)
 
 Планируется сделать:
 - Добавить тестирование
