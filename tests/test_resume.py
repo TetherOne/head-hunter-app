@@ -1,26 +1,20 @@
-import httpx
-import pytest
 from httpx import AsyncClient
-from sqlalchemy.ext.asyncio import AsyncSession
-from fastapi.testclient import TestClient
 
-from conftest import client
 from main import app
 
 
-#
-#
-# def test_main_page():
-#     response = client.get('/')
-#     assert response.status_code == 200
-#     assert response.json() == {'message': 'hello world'}
-#
 
-@pytest.mark.asyncio
-async def test_main_page_async():
-    async with AsyncClient(base_url="http://127.0.0.1:8000/") as client:
-        response = await client.get('/')
-        assert response.status_code == 200
-        assert response.json() == {'message': 'hello world'}
+async def test_create_resume():
+    async with AsyncClient(app=app, base_url="http://127.0.0.1:8000/api/v1") as ac:
+        response = await ac.post(
+            "/resume",
+            json={
+              "user_id": 19,
+              "job_name": "дворник",
+              "skills": "мести дорогу",
+              "experience": "20 лет",
+              "salary": 121212
+            }
+        )
 
-
+        assert response.status_code in {201, 307}
