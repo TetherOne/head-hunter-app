@@ -1,3 +1,7 @@
+import time
+
+from fastapi_cache import FastAPICache
+from fastapi_cache.decorator import cache
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from .schemas import ResumeUpdatePartial
@@ -22,6 +26,7 @@ resume_router = APIRouter(tags=['Resume'])
 
 
 @resume_router.get('/', response_model=list[Resume])
+@cache(expire=60)
 async def get_all_resume(
         session: AsyncSession = Depends(db_helper.scoped_session_dependency),
 ):
@@ -39,6 +44,9 @@ async def create_resume(
         resume_in: ResumeCreate,
         session: AsyncSession = Depends(db_helper.scoped_session_dependency),
 ):
+
+    cache_backend = FastAPICache.get_backend()
+    await cache_backend.clear()
 
     return await crud.create_resume(session=session, resume_in=resume_in)
 
@@ -60,6 +68,9 @@ async def update_resume(
     session: AsyncSession = Depends(db_helper.scoped_session_dependency),
 ):
 
+    cache_backend = FastAPICache.get_backend()
+    await cache_backend.clear()
+
     return await crud.update_resume(
         resume=resume,
         session=session,
@@ -75,6 +86,9 @@ async def update_resume_partial(
     session: AsyncSession = Depends(db_helper.scoped_session_dependency),
 ):
 
+    cache_backend = FastAPICache.get_backend()
+    await cache_backend.clear()
+
     return await crud.update_resume(
         session=session,
         resume=resume,
@@ -89,6 +103,9 @@ async def delete_resume(
     resume: Resume = Depends(resume_by_id),
     session: AsyncSession = Depends(db_helper.scoped_session_dependency),
 ) -> None:
+
+    cache_backend = FastAPICache.get_backend()
+    await cache_backend.clear()
 
     await crud.delete_resume(session=session, resume=resume)
 
