@@ -1,20 +1,30 @@
-from httpx import AsyncClient
+from fastapi.testclient import TestClient
 
 from main import app
 
 
 
-async def test_create_resume():
-    async with AsyncClient(app=app, base_url="http://127.0.0.1:8000/api/v1") as ac:
-        response = await ac.post(
-            "/resume",
-            json={
-              "user_id": 19,
-              "job_name": "дворник",
-              "skills": "мести дорогу",
-              "experience": "20 лет",
-              "salary": 121212
-            }
-        )
+client = TestClient(app)
 
-        assert response.status_code in {201, 307}
+
+
+def test_create_resume():
+    response = client.post(
+        "http://127.0.0.1:8000/api/v1/resume",
+        json={
+          "user_id": 29,
+          "job_name": 'водила',
+          "skills": 'быстро еду',
+          "experience": "10 лет",
+          "salary": 100000
+        }
+    )
+
+    if response.status_code == 201:
+
+        assert True
+
+    else:
+
+        print('Неправильная валидация данных при создании резюме.')
+        assert False
