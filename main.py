@@ -1,11 +1,15 @@
-from fastapi_cache import FastAPICache
+from fastapi_cache.backends.redis import RedisBackend
 
 from api_v1 import main_router as router_v1
 
 from contextlib import asynccontextmanager
-from fastapi_cache.backends.redis import RedisBackend
-from core.config import settings
+
+from fastapi_cache import FastAPICache
+
 from redis import asyncio as aioredis
+
+from core.config import settings
+
 from fastapi import Request
 from fastapi import FastAPI
 
@@ -24,7 +28,7 @@ app = FastAPI(lifespan=lifespan)
 
 
 redis = aioredis.from_url("redis://127.0.0.1:6379", encoding="utf-8", decode_responses=True)
-FastAPICache.init(RedisBackend(redis), prefix="fastapi-cache")
+FastAPICache.init(RedisBackend(redis), prefix="Head-Hunter-cache")
 
 
 
