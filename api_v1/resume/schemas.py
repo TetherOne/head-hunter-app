@@ -1,3 +1,5 @@
+from typing import Optional
+
 from pydantic import BaseModel
 from pydantic import ConfigDict
 
@@ -25,10 +27,11 @@ class ResumeUpdate(ResumeCreate):
 
 class ResumeUpdatePartial(ResumeCreate):
 
-    job_name: str | None = None
-    skills: str | None = None
-    experience: str | None = None
-    salary: int | None = None
+    user_id: int = None
+    job_name: Optional[str] = None
+    skills: Optional[str] = None
+    experience: Optional[str] = None
+    salary: Optional[int] = None
 
 
 
