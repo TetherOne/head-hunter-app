@@ -14,4 +14,5 @@
 ![Image alt](https://github.com/TetherOne/head_hunter/raw/master/photoes_for_github/img_1.png)
 
 Планируется добавить
+- Dockerfile
 - Очереди задач celery[redis]
