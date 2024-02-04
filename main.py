@@ -11,12 +11,11 @@ from redis import asyncio as aioredis
 
 from core.config import settings
 
-from fastapi import Request, BackgroundTasks
+from fastapi import Request
 from fastapi import FastAPI
 
 import uvicorn
 
-# from tasks.tasks import sum_num
 
 
 @asynccontextmanager
@@ -44,16 +43,6 @@ app.include_router(router=router_v1, prefix=settings.api_v1_prefix)
 @app.get('/')
 def hello_world(request: Request):
     return {'message': 'hello world'}
-
-
-
-# @app.get('/ping')
-# async def ping(background_tasks: BackgroundTasks):
-#     a = 11
-#     b = 5
-#     background_tasks.add_task(sum_num, a, b)
-#     return {'message': 'pong'}
-
 
 
 
