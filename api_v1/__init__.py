@@ -12,6 +12,7 @@ from fastapi_users import FastAPIUsers
 
 from fastapi import APIRouter
 
+from api_v1.users.views import user_router
 from core.models import User
 
 
@@ -21,6 +22,7 @@ main_router = APIRouter()
 
 
 main_router.include_router(router=resume_router, prefix='/resume')
+main_router.include_router(router=user_router, prefix='/users')
 
 
 
