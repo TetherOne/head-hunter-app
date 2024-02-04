@@ -1,11 +1,10 @@
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from fastapi import APIRouter
-from fastapi import Depends
-
-
 from .dependencies import user_by_id
 from core.models import db_helper
+
+from fastapi import APIRouter
+from fastapi import Depends
 
 from .schemas import User
 

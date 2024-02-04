@@ -13,6 +13,7 @@ class UserBase(BaseModel):
     is_verified: bool
 
 
+
 class User(UserBase):
 
     model_config = ConfigDict(from_attributes=True)
