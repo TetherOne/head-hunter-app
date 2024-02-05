@@ -1,0 +1,47 @@
+version: '3.7'
+
+services:
+  db:
+
+    image: postgres:15
+    container_name: db_hh
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: qwerty
+      POSTGRES_DB: head_hunter
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -d head_hunter -U postgres -h 127.0.0.1" ]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+
+  redis:
+    image: redis:7
+    container_name: redis_hh
+    ports:
+      - 6379:6379
+    healthcheck:
+      test: [ "CMD-SHELL", "redis-cli", "ping" ]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+
+  app:
+    build:
+      context: .
+    container_name: hh-app
+    command:
+      - sh
+      - -c
+      - "alembic upgrade head && gunicorn main:app --workers 4 --worker-class uvicorn.workers.UvicornWorker --bind=0.0.0.0:8000"
+    ports:
+      - 8000:8000
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
