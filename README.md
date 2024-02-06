@@ -3,8 +3,8 @@
 - Кэширование ==> Redis
 - Валидация ==> Pydantic
 - Тестирование ==> Pytest
-- Создание миграций ==> Alembic
 - Очереди задач ==> Celery[redis]
+- Создание миграций ==> Alembic
 - Контроль зависимостей ==> Poetry
 - Взаимодействие с бд с ==> асинхронная SQLAlchemy 2.0
 - База данных ==> PostgreSQL + асинхронный движок asyncpg
@@ -13,6 +13,3 @@
 
 ![Image alt](https://github.com/TetherOne/head_hunter/raw/master/photoes_for_github/img_1.png)
 ![Image alt](https://github.com/TetherOne/head_hunter/raw/master/photoes_for_github/img_2.png)
-
-Планируется добавить
-- Очереди задач celery[redis]
