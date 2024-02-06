@@ -16,6 +16,7 @@ from fastapi import FastAPI
 
 import uvicorn
 
+from tasks.router import sum_router
 
 
 @asynccontextmanager
@@ -34,6 +35,7 @@ FastAPICache.init(RedisBackend(redis), prefix="Head-Hunter-cache")
 
 
 app.include_router(router=router_v1, prefix=settings.api_v1_prefix)
+app.include_router(sum_router, prefix=settings.api_v1_prefix)
 
 
 
@@ -45,6 +47,6 @@ def hello_world(request: Request):
     return {'message': 'hello world'}
 
 
-#
+
 # if __name__ == '__main__':
 #     uvicorn.run('main:app', reload=True)
