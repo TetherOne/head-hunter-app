@@ -1,16 +1,19 @@
-from fastapi import APIRouter, BackgroundTasks
+from fastapi import BackgroundTasks
+from fastapi import APIRouter
 
-from tasks.tasks import sum_task
+from tasks.tasks import send_email
 
-sum_router = APIRouter(prefix="/report")
 
-@sum_router.get("/sum")
+
+email_router = APIRouter(prefix="/report")
+
+
+
+@email_router.get("/email")
 def get_dashboard_report(background_tasks: BackgroundTasks):
-    sum_task(1, 7)
-    background_tasks.add_task(sum_task, 1, 7)
-    sum_task.delay(1, 7)
+    send_email.apply_async(['pashajobber@gmail.com'], countdown=10)
     return {
         "status": 200,
-        "data": "Сумма получена",
+        "data": "Письмо будет отправлено через 10 секунд",
         "details": None
     }
