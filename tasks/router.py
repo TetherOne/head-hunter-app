@@ -5,7 +5,7 @@ from tasks.tasks import send_email
 
 
 
-email_router = APIRouter(prefix="/report")
+email_router = APIRouter(prefix="/send")
 
 
 
