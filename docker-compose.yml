@@ -11,11 +11,10 @@ services:
       POSTGRES_PASSWORD: qwerty
       POSTGRES_DB: head_hunter
     healthcheck:
-      test: [ "CMD-SHELL", "pg_isready -d head_hunter -U postgres -h 127.0.0.1" ]
+      test: ["CMD-SHELL", "pg_isready -d head_hunter -U postgres -h 127.0.0.1"]
       interval: 5s
       timeout: 3s
       retries: 5
-
 
   redis:
     image: redis:7
@@ -28,19 +27,28 @@ services:
       timeout: 3s
       retries: 5
 
-
   app:
     build:
       context: .
     container_name: hh-app
-    command:
-      - sh
-      - -c
-      - "alembic upgrade head && gunicorn main:app --workers 4 --worker-class uvicorn.workers.UvicornWorker --bind=0.0.0.0:8000"
+    command: sh -c "alembic upgrade head && gunicorn main:app --workers 4 --worker-class uvicorn.workers.UvicornWorker --bind=0.0.0.0:8000"
     ports:
       - 8000:8000
     depends_on:
-      db:
-        condition: service_healthy
-      redis:
-        condition: service_healthy
+      - db
+      - redis
+
+  celery:
+    build: .
+    container_name: celery_hh
+    command: celery --app tasks.tasks:celery worker -l INFO
+    depends_on:
+      - redis
+
+  flower:
+    build: .
+    container_name: flower_hh
+    command: celery --app tasks.tasks:celery flower
+    depends_on:
+      - redis
+      - celery
