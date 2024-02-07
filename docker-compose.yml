@@ -31,12 +31,17 @@ services:
     build:
       context: .
     container_name: hh-app
-    command: sh -c "alembic upgrade head && gunicorn main:app --workers 4 --worker-class uvicorn.workers.UvicornWorker --bind=0.0.0.0:8000"
+    command:
+      - sh
+      - -c
+      - "alembic upgrade head && gunicorn main:app --workers 4 --worker-class uvicorn.workers.UvicornWorker --bind=0.0.0.0:8000"
     ports:
       - 8000:8000
     depends_on:
       - db
       - redis
+      - celery
+      - flower
 
   celery:
     build: .
