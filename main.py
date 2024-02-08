@@ -29,7 +29,7 @@ app = FastAPI(lifespan=lifespan)
 
 
 
-redis = aioredis.from_url("redis://127.0.0.1:6379", encoding="utf-8", decode_responses=True)
+redis = aioredis.from_url("redis://red-cn2a4fol5elc73eancu0:6379", encoding="utf-8", decode_responses=True)
 FastAPICache.init(RedisBackend(redis), prefix="Head-Hunter-cache")
 
 
