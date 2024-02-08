@@ -9,7 +9,7 @@ from pydantic import BaseModel
 
 class DbSettings(BaseModel):
 
-    url: str = f'postgresql+asyncpg://head_hunter_test:Wrb27C2l13aG8c1un6gbXwtKyqa8sISa@dpg-cn281sol6cac739b7e40-a:5432/head_hunter'
+    url: str = f'postgresql+asyncpg://head_hunter_test:UWZoR2KhgtWiUJjHQzcGOqCbMyEbbXx3@dpg-cn28bm2cn0vc738u4k50-a:5432/head_hunter_ugob'
     echo: bool = False
 
 

@@ -16,7 +16,7 @@ load_dotenv()
 
 
 
-celery = Celery('tasks', broker='redis://red-cn2832gl5elc73ea76g0:6379')
+celery = Celery('tasks', broker='redis://red-cn28bpicn0vc738u4l6g:6379')
 
 
 
