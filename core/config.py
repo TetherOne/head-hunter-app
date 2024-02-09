@@ -1,4 +1,6 @@
+import os
 
+from dotenv import load_dotenv
 from sqlalchemy.ext.asyncio import create_async_engine
 from sqlalchemy.ext.asyncio import async_sessionmaker
 
@@ -6,12 +8,12 @@ from pydantic_settings import BaseSettings
 
 from pydantic import BaseModel
 
-
+load_dotenv()
 
 
 class DbSettings(BaseModel):
 
-    url: str = f'postgresql+asyncpg://head_hunter_test:35Koz4lWiUu87GggjaON6N12OzrFyX4j@dpg-cn3428vqd2ns73eelg6g-a:5432/head_hunter_db_test_g1wr'
+    url: str = f'postgresql+asyncpg://{os.environ.get("POSTGRES_USERNAME")}:{os.environ.get("POSTGRES_PASSWORD")}:@{os.environ.get("POSTGRES_HOSTNAME")}:5432/{os.environ.get("POSTGRES_DATABASE")}'
     echo: bool = False
 
 

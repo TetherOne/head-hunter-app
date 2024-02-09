@@ -8,15 +8,15 @@ from celery import Celery
 
 import smtplib
 
-# import os
-#
-#
-#
-# load_dotenv()
+import os
 
 
 
-celery = Celery('tasks', broker=f'redis://red-cn342cacn0vc738l4s10:6379')
+load_dotenv()
+
+
+
+celery = Celery('tasks', broker=f'redis://{os.environ.get("REDIS_URL"):{os.environ.get("REDIS_PORT")}}')
 
 
 
