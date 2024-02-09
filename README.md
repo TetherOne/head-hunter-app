@@ -21,4 +21,4 @@
 
 ссылка на проект
 
-https://hh-efui.onrender.com/docs
+https://hh-v6xt.onrender.com/docs
