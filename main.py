@@ -1,4 +1,3 @@
-
 from fastapi_cache.backends.redis import RedisBackend
 
 from api_v1 import main_router as router_v1
@@ -18,6 +17,13 @@ import uvicorn
 
 from tasks.router import email_router
 
+from dotenv import load_dotenv
+
+import os
+
+
+load_dotenv()
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
@@ -29,7 +35,7 @@ app = FastAPI(lifespan=lifespan)
 
 
 
-redis = aioredis.from_url("redis://red-cn2a4fol5elc73eancu0:6379", encoding="utf-8", decode_responses=True)
+redis = aioredis.from_url(f'redis://{os.environ.get("REDIS_URL")}:{os.environ.get("REDIS_PORT")}', encoding="utf-8", decode_responses=True)
 FastAPICache.init(RedisBackend(redis), prefix="Head-Hunter-cache")
 
 
