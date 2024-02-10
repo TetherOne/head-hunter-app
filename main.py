@@ -10,19 +10,21 @@ from redis import asyncio as aioredis
 
 from core.config import settings
 
+from tasks.router import email_router
+
+from dotenv import load_dotenv
+
 from fastapi import Request
 from fastapi import FastAPI
 
 import uvicorn
 
-from tasks.router import email_router
-
-from dotenv import load_dotenv
-
 import os
 
 
+
 load_dotenv()
+
 
 
 @asynccontextmanager
