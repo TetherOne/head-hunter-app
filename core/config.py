@@ -1,6 +1,3 @@
-import os
-
-from dotenv import load_dotenv
 from sqlalchemy.ext.asyncio import create_async_engine
 from sqlalchemy.ext.asyncio import async_sessionmaker
 
@@ -8,7 +5,14 @@ from pydantic_settings import BaseSettings
 
 from pydantic import BaseModel
 
+from dotenv import load_dotenv
+
+import os
+
+
+
 load_dotenv()
+
 
 
 class DbSettings(BaseModel):
