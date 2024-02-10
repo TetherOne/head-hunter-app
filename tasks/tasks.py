@@ -26,7 +26,7 @@ def send_email(recipients_emails):
     login = 'hh-adm1nistrator@yandex.ru'
     password = os.getenv("PASSWORD_EMAIL")
 
-    message = MIMEText('Привет', 'plain', 'utf-8')
+    message = MIMEText('Здравствуйте', 'plain', 'utf-8')
     message['Subject'] = Header(f'Сообщение доставлено', 'utf-8')
     message['From'] = login
     message['To'] = ', '.join(recipients_emails)
