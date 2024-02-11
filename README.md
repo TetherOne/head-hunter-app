@@ -19,7 +19,5 @@
 
 ![Image alt](https://github.com/TetherOne/head_hunter/raw/master/photoes_for_github/img_3.png)
 
------------------------------------------------------------------------------------------
-ссылка на проект
 
-https://hh-v6xt.onrender.com/docs
+Функционал проекта можно посмотреть здесь https://hh-v6xt.onrender.com/docs
