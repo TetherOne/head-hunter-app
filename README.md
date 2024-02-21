@@ -17,8 +17,6 @@
   - База данных: PostgreSQL + асинхронный движок asyncpg
 
 
-Функционал проекта можно посмотреть по ссылке:
-  https://hh-v6xt.onrender.com/docs
 
 
 ![Image alt](https://github.com/TetherOne/head_hunter/raw/master/photoes_for_github/img_3.png)
