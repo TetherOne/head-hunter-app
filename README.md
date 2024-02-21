@@ -17,7 +17,7 @@
 
 
 
-![Image alt](https://github.com/TetherOne/head_hunter/raw/master/photoes_for_github/img_3.png)
+![Image alt](https://github.com/TetherOne/head_hunter/raw/master/github_pages/img_3.png)
 
 ссылка на проект
 
