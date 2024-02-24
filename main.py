@@ -37,7 +37,7 @@ app = FastAPI(lifespan=lifespan)
 
 
 
-redis = aioredis.from_url(f'redis://127.0.0.1:6379', encoding="utf-8", decode_responses=True)
+redis = aioredis.from_url("redis://127.0.0.1:6379", encoding="utf-8", decode_responses=True)
 FastAPICache.init(RedisBackend(redis), prefix="Head-Hunter-cache")
 
 
@@ -53,5 +53,5 @@ def hello_world(request: Request):
 
 
 
-if __name__ == '__main__':
-    uvicorn.run('main:app', reload=True)
+# if __name__ == '__main__':
+#     uvicorn.run('main:app', reload=True)
