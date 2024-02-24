@@ -1,8 +1,8 @@
 FROM python:3.11.4-slim
 
-RUN mkdir /fastapi_app
+RUN mkdir /fastapi-app
 
-WORKDIR /fastapi_app
+WORKDIR /fastapi-app
 
 COPY requirements.txt .
 
@@ -12,4 +12,4 @@ COPY . .
 
 RUN alembic upgrade head
 
-CMD gunicorn main:app --workers 3 --    worker-class uvicorn.workers.UvicornWorker --bind=0.0.0.0:8000
+CMD gunicorn main:app --workers 3 --worker-class uvicorn.workers.UvicornWorker --bind=0.0.0.0:8000
