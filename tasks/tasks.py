@@ -16,7 +16,7 @@ load_dotenv()
 
 
 
-celery = Celery('tasks', broker=f'redis://{os.environ.get("REDIS_URL"):{os.environ.get("REDIS_PORT")}}')
+celery = Celery('tasks', broker=f'redis://127.0.0.1:6379')
 
 
 

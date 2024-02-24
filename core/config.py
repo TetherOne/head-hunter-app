@@ -17,7 +17,7 @@ load_dotenv()
 
 class DbSettings(BaseModel):
 
-    url: str = f'postgresql+asyncpg://{os.environ.get("POSTGRES_USERNAME")}:{os.environ.get("POSTGRES_PASSWORD")}:@{os.environ.get("POSTGRES_HOSTNAME")}:5432/{os.environ.get("POSTGRES_DATABASE")}'
+    url: str = f'postgresql+asyncpg://postgres:qwerty@127.0.0.1:5432/head_hunter'
     echo: bool = False
 
 
