@@ -16,7 +16,7 @@ load_dotenv()
 
 
 
-celery = Celery('tasks', broker=f'redis://127.0.0.1:6379')
+celery = Celery('tasks', broker='redis://redis_hh:6379')
 
 
 
@@ -26,7 +26,7 @@ def send_email(recipients_emails):
     login = 'hh-adm1nistrator@yandex.ru'
     password = os.getenv("PASSWORD_EMAIL")
 
-    message = MIMEText('Здравствуйте', 'plain', 'utf-8')
+    message = MIMEText('Привет', 'plain', 'utf-8')
     message['Subject'] = Header(f'Сообщение доставлено', 'utf-8')
     message['From'] = login
     message['To'] = ', '.join(recipients_emails)

@@ -10,21 +10,12 @@ from redis import asyncio as aioredis
 
 from core.config import settings
 
-from tasks.router import email_router
-
-from dotenv import load_dotenv
-
 from fastapi import Request
 from fastapi import FastAPI
 
 import uvicorn
 
-import os
-
-
-
-load_dotenv()
-
+from tasks.router import email_router
 
 
 @asynccontextmanager
@@ -37,7 +28,7 @@ app = FastAPI(lifespan=lifespan)
 
 
 
-redis = aioredis.from_url("redis://127.0.0.1:6379", encoding="utf-8", decode_responses=True)
+redis = aioredis.from_url("redis://redis_hh:6379", encoding="utf-8", decode_responses=True)
 FastAPICache.init(RedisBackend(redis), prefix="Head-Hunter-cache")
 
 

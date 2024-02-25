@@ -5,19 +5,11 @@ from pydantic_settings import BaseSettings
 
 from pydantic import BaseModel
 
-from dotenv import load_dotenv
-
-import os
-
-
-
-load_dotenv()
-
 
 
 class DbSettings(BaseModel):
 
-    url: str = f'postgresql+asyncpg://postgres:qwerty@127.0.0.1:5432/head_hunter'
+    url: str = f'postgresql+asyncpg://postgres:qwerty@db_hh:5432/head_hunter'
     echo: bool = False
 
 
