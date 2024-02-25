@@ -2,7 +2,8 @@
 
 
     При разработке проекта использовался фреймворк FastAPI,
-    было написано Api для сайта по поиску кандидатов на работу (взаимодействия с резюме, пользователями (регистрация, аутентификация), 
+    было написано Api для сайта по поиску кандидатов на работу
+    (взаимодействия с резюме, пользователями (регистрация, аутентификация), 
     реализован полный CRUD).
 
 ![Image alt](https://github.com/TetherOne/head_hunter/raw/master/github_pages/img_3.png)
@@ -20,16 +21,15 @@
 
 # Запуск проекта:
 
-## 1. Clone the Repository:
+## 1. Клонируйте репозиторий:
 ```
-git clone https://github.com/vipdev1988/ecommerce.git
-cd ECommerceSite
+git clone https://github.com/TetherOne/head-hunter
 ```
 ## 2. Соберите docker-compose:
 ```
 docker compose build
 ```
-## 4. Запустите docker-compose:
+## 3. Запустите docker-compose:
 ```
 docker compose up
 ```
