@@ -36,6 +36,9 @@ docker compose build
 ```
 docker compose up
 ```
-
+## 4. Перейдите в браузер по ссылке:
+```
+http://127.0.0.1:8000/
+```
 
 
