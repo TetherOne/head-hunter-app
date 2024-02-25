@@ -74,17 +74,17 @@ def test_update_resume_partial():
 
 
 
-# def test_delete_resume():
-#     resume_id = 15
-#     response = client.delete(
-#         f'http://127.0.0.1:8000/api/v1/resume/{resume_id}'
-#     )
-#     print(response.json())
-#     if response.status_code == 204:
-#
-#         assert True
-#
-#     else:
-#
-#         print('Ошибка при удалении резюме, проверьте resume_id')
-#         assert False
+def test_delete_resume():
+    resume_id = 15
+    response = client.delete(
+        f'http://127.0.0.1:8000/api/v1/resume/{resume_id}'
+    )
+    print(response.json())
+    if response.status_code == 204:
+
+        assert True
+
+    else:
+
+        print('Ошибка при удалении резюме, проверьте resume_id')
+        assert False
