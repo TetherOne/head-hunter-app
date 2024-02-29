@@ -1,7 +1,7 @@
 [![Python 3.6](https://img.shields.io/badge/python-3.11-green.svg)](https://www.python.org/downloads/release/python-360/)
 ![Django 3.0](https://img.shields.io/badge/FastAPI-0.109.0-green.svg)
 
-# Описание проекта:
+# Описание проекта
 
 
     При разработке проекта использовался фреймворк FastAPI,
@@ -13,7 +13,7 @@
 ![Image alt](https://github.com/TetherOne/head_hunter/raw/master/github_pages/img_3.png)
 
 
-# Техническая информация:
+# Техническая информация
 
   - Кэширование: Redis
   - Валидация: Pydantic
@@ -23,7 +23,7 @@
   - Взаимодействие с бд: асинхронная SQLAlchemy 2.0
   - База данных: PostgreSQL + асинхронный движок asyncpg
 
-# Запуск проекта:
+# Запуск проекта
 
 ## 1. Клонируйте репозиторий:
 ```
