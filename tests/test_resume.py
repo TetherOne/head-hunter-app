@@ -3,9 +3,7 @@ from fastapi.testclient import TestClient
 from main import app
 
 
-
 client = TestClient(app)
-
 
 
 def test_create_resume():
@@ -53,7 +51,6 @@ def test_update_resume():
         assert False
 
 
-
 def test_update_resume_partial():
     resume_id = 25
     response = client.patch(
@@ -71,7 +68,6 @@ def test_update_resume_partial():
 
         print('Неправильная валидация данных при обновлении резюме.')
         assert False
-
 
 
 def test_delete_resume():
